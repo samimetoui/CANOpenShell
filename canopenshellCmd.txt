@@ -1,0 +1,43 @@
+CANOpenShell 
+
+load#cygcan_peak_win32.dll,0,125K,255,1 *débit,
+
+ssta#6
+
+wsdo#6,6081,00,04,00010400 *vitesse 260 s/sec
+wsdo#6,6040,00,04,00000006 *mode enable voltage | quick stop
+wsdo#6,6040,00,04,00000007 *mode                             | switch on
+wsdo#6,6040,00,04,0000000F *mode                                         | enable op
+wsdo#6,6060,00,04,00000001 *mode operation 1 = profil position mode
+
+
+wsdo#6,6040,00,04,0000007F *
+wsdo#6,607A,00,04,000000FF *set position FF
+wsdo#6,6040,00,04,0000006F *
+
+wsdo#6,6040,00,04,00000000
+
+wsdo#6,6040,00,04,0000007F *
+wsdo#6,607A,00,04,000FFA00 *set position FA00
+wsdo#6,6040,00,04,0000006F *
+info#6
+
+wsdo#6,607A,00,04,FFFFF000 *set position (négative)
+
+wsdo#6,607A,00,04,0000017F *halt
+
+wsdo#6,607A,00,04,0FF00000
+
+wsdo#6,6040,00,04,0000002F
+wsdo#6,6040,00,04,0000003F
+wsdo#6,6040,00,04,0000004F
+wsdo#6,6040,00,04,0000005F
+
+rsdo#6,6041,00
+rsdo#6,6040,00
+
+
+
+new_setpoint
+change_set_imemdiately
+
